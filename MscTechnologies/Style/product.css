@@ -1,0 +1,116 @@
+*{
+    
+    align-items: center;
+   
+}
+body{
+    background-color: var(--body);
+background-image: url(../Images/BG2.jpg);
+    
+    background-size: cover;
+   
+    background-repeat: no-repeat;
+    position: relative;
+  
+    
+}
+
+.Container{
+    /* margin-top: 3rem;
+    margin-bottom:3rem ;
+    margin-left: 6rem;
+    margin-right:6rem ; */
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    align-items: normal;
+    background-image: linear-gradient(45deg, #3976fa54 50%, #ff151562 100%);
+    height: 100%;
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.36);
+    transform: translateY(5rem);
+    
+
+}
+.Products{
+    color: #eee;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.613);
+    margin-left: 5rem;
+    padding: 0.1rem;
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+
+}
+.images{
+    background-color: #eeeeee63;
+    
+    padding: 0.5rem;
+    border-radius: 100px;
+}
+.Products p{
+    text-align: center;
+}
+.Products img{
+    align-items: center;
+    justify-items: center;
+  margin-left: 2rem;
+  
+    padding: auto; 
+    border-radius: 100px;
+    position: relative;
+    height: 130px;
+    
+}
+.Products img:hover{
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.505);
+    
+    padding: auto; 
+    border-radius: 100px;
+    position: relative;
+    height: 130px;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    animation-name: imagerot;
+    animation-duration: 3s ;
+    animation-iteration-count: infinite;
+    
+}
+.Products:hover{
+    opacity: 1;
+    transition: 0.25s;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.505);
+    animation-name: Hoverlog;
+    animation-duration: 1.5s ;
+    animation-iteration-count: infinite;
+    
+    
+    color: rgb(255, 255, 255);
+   
+}
+@keyframes Hoverlog {
+       0%{background-image: linear-gradient(-30deg, #3976fa54 25%, #ff151562 100%);} 
+       10%{background-image: linear-gradient(0deg, #3976fa54 25%, #ff151562 100%);} 
+       20%{background-image: linear-gradient(30deg, #3976fa54 25%, #ff151562 100%);} 
+       30%{background-image: linear-gradient(60deg, #3976fa54 25%, #ff151562 100%);} 
+       40%{background-image: linear-gradient(90deg, #3976fa54 25%, #ff151562 100%);} 
+       50%{background-image: linear-gradient(120deg, #3976fa54 25%, #ff151562 100%);} 
+       60%{background-image: linear-gradient(150deg, #3976fa54 25%, #ff151562 100%);} 
+       70%{background-image: linear-gradient(180deg, #3976fa54 25%, #ff151562 100%);} 
+       80%{background-image: linear-gradient(210deg, #3976fa54 25%, #ff151562 100%);} 
+       90%{background-image: linear-gradient(240deg, #3976fa54 25%, #ff151562 100%);} 
+       95%{background-image: linear-gradient(270deg, #3976fa54 25%, #ff151562 100%);} 
+       100%{background-image: linear-gradient(300deg, #3976fa54 25%, #ff151562 100%);} 
+}
+
+@keyframes imagerot {
+    0%{transform: rotateZ(30deg);}
+    25%{transform: rotateZ(0deg);}
+    50%{transform: rotateZ(-30deg);}
+    75%{transform: rotateZ(0deg);}
+    100%{transform: rotateZ(30deg);}
+    
+}

@@ -1,0 +1,79 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Titillium Web", sans-serif;
+	position: relative;
+    
+}
+:root{
+    --textColor: #eee;
+}
+header {
+	font-size: 18px;
+	
+	display: flex; 
+	align-items: center;
+	justify-content: start;
+	height: 60px;
+	padding: 0 2rem;
+	
+		background-color: #3333331c;
+		width:100%;
+    
+   
+    background: #23232352;
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.36);
+	  
+	color: var(--textColor);
+	
+	
+}
+.Navs{
+	text-align: start;
+	align-items: center;
+	justify-content: flex-end;
+}
+img{
+	margin-left: 0rem;
+	margin-bottom: 0.5rem;
+	margin-top: 0.5rem;
+	height: 110px;
+	width: 110px;
+	
+}
+.cardimg{
+	height: 100%;
+	width: 100%;
+}
+nav a {
+	padding: 1rem;
+	margin:  1rem;
+	color: var(--textColor);
+	text-decoration: none;
+	
+}
+header .links:hover{
+    color: #db2b39;
+    transition: 0.5s;
+}
+#cart{
+    align-items: center;
+    margin-top: 0.5rem;
+
+}
+.card{
+    height: 100%;
+    background-color: #db2b3a4b;
+    border: solid rgba(0, 255, 255, 0.316);
+    padding: 0.5rem;
+    color: #eee;
+
+}
+.btn{
+    border: solid  rgba(0, 255, 255, 0.316);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #2bdb42;
+    color: black;
+}

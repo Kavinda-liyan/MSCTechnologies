@@ -1,0 +1,78 @@
+
+.loginbox{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    background-color: rgb(56, 56, 56);
+    height: 100%;
+
+    
+   
+    
+}
+
+.login{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.419);
+    padding: 4rem;
+    border: #ffd727 solid;
+    border-radius: 0.5rem;
+    
+}
+img{
+   padding-top: 1rem;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+    
+}
+h3{
+    text-align: center;
+    color: #fff;
+}
+label{
+    text-align: center;
+    color: #ffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+.input{
+    border-radius: 1rem;
+    height: 40px;
+    margin: 0.1rem;
+    border: 3px solid rgb(255, 215, 53);
+    width: 100%;
+    background-color: rgb(181, 238, 255);
+    font-weight: bold;
+    text-align: center;
+    
+}
+.submit{
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: #ffd727 solid;
+    background-color: rgb(63, 166, 255);
+    color: #000000;
+    border-radius: 0.5rem;
+    width: 100%;
+    
+    
+}
+.submit :hover{
+    transition: 0.5s;
+    color: red;
+}
+a{
+    text-align: center;
+    text-decoration: none;
+}
