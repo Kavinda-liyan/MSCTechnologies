@@ -1,8 +1,11 @@
 
 <?php
+// Start or resume the session
+session_start();
+
+// Error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 
 ?>
 <header>
@@ -15,20 +18,26 @@ ini_set('display_errors', 1);
         <div class="collapse navbar-collapse justify-content-center" id="coldow">
             <ul class="navbar-nav fw-bold hovef">
                 <?php 
-                echo '<li class="nav-item"><a href="#" class="links nav-link"><span></span>Home</a></li>
+                echo '<li class="nav-item"><a href="./index.php" class="links nav-link"><span></span>Home</a></li>
                 <li class="nav-item"><a href="./product.php" class="links nav-link"><span></span>Product</a></li>
-                <li class="nav-item"><a href="#" class="links nav-link"><span></span>Services</a></li>';
+                <li class="nav-item"><a href="./services.php" class="links nav-link"><span></span>Services</a></li>';
                 ?>
 
                 <?php
                 if (!isset($_SESSION['id'])) {
-                    echo '<li class="nav-item"><a href="signin.php" class="Login nav-link">Sign In</a></li>';
+                    echo '<li class="nav-item"><a href="signin.php" class="Login nav-link glow-on-hover">Sign In</a></li>';
                 }
 
                 if (isset($_SESSION['id'])) {
-                    echo '<li class="nav-item"><a href="logout.php" class="Login nav-link">Sign out</a></li>';
+                    
+                    echo '<li class="nav-item"><a href="#" class="links nav-link"><span></span>User</a></li>';
+                    echo '<li class="nav-item"><a href="#" class="links nav-link"><span></span>Cart</a></li>';
+                    echo '<li class="nav-item"><a href="logout.php" class="Login nav-link glow-on-hover">Sign out</a></li>';
                 }
+
                 ?>
+
+                
             </ul>
         </div>
 

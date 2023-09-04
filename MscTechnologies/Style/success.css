@@ -1,0 +1,29 @@
+body{
+    background-color: rgba(158, 158, 158, 0.741);
+}
+.container{
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+}
+.container h1{
+    align-self: center;
+    justify-content: center;
+    margin-top: 10rem;
+    font-size: 4rem;
+    animation: fade-in 2s forwards;
+}
+@keyframes fade-in{
+    from{
+      transform: translateY(50rem);
+      color: rgba(0, 0, 0, 0);
+      opacity: 0;
+    }
+    to{
+      transform: translateY(0rem);
+      color: rgb(0, 0, 0);
+      opacity: 1;
+    }
+
+  }

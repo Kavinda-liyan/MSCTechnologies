@@ -1,0 +1,54 @@
+.servicebg{
+    background-color: rgba(0, 0, 0, 0.592);
+}
+.service-bg{
+    
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 500px;
+    min-height: 250px;
+  
+    color: #eee;
+    border-radius: 0.3rem;
+
+    
+}
+hr{
+    border-top: 5px solid rgb(255, 255, 255);
+    border-radius: 2rem;
+border-width: 80%;
+}
+.service-bg img{
+   margin-left: auto;
+   margin-top: 0.5rem;
+   margin-right: auto;
+   margin-bottom: 0.5rem;
+   height: 200px;
+   width: 200px;
+   padding: 0.5rem;
+   border-radius: 1rem;
+   background-color: #eeeeee23;
+}
+.service-bg h3{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    
+}
+.service-bg p{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: start;
+    padding: 2rem;
+    
+}
+.glow-on-hover :hover{
+    cursor: pointer;
+
+}
+.containerservice{
+    padding: 1rem;
+}

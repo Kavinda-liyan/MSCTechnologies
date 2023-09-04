@@ -82,6 +82,33 @@ section .Content img{
     align-items: center;
    justify-content: center;
 }
+.Content2{
+    
+    height: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+   justify-content: center;
+}
+.container2au{
+    background-color: #00000000;
+    align-items: center;
+   justify-content: center;
+   height: 50vh;
+   width: 120vh;
+   padding: 2rem;
+   margin-top: 3rem;
+   margin-bottom: 3rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+ 
+    /* border-style: double; */
+}
+.container2au img{
+    height: 200px;
+    width: 200px;
+}
+
 .container2 h1{
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -106,17 +133,7 @@ section .Content img{
       text-shadow: 0 0 10px #fff, 0 0 15px #4dcdff, 0 0 20px #4d77ff, 0 0 25px #4df9ff, 0 0 30px #4dffdb, 0 0 40px #4dcdff, 0 0 50px #4ddeff;
     }
   }
-.Content::before {    
-    content: "";
-    background-image: url('../Images/CCTVinstallation.jpg');
-    background-size: cover;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.5;
-}
+
 .container2 h3{
     text-align: center;
     margin-top: 2rem;
@@ -217,3 +234,87 @@ section .Content img{
         transition: 0.5s;
     }
   }
+
+  /* slideshow */
+  .slideshow-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+    
+  }
+  .slideshow-container img{
+    margin-left:auto ;
+    margin-right: auto;
+    width: 80%;
+    height: 400px;
+    border-radius: 0.5rem;
+    box-shadow: #00000035 1px 2px 2px 2px;
+  }
+  .slideshow-container h2{
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+  }
+ 
+
+.mySlides {
+    display: none;
+}
+
+
+
+.w3-button {
+    background-color: #00000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    font-size: 64px;
+}
+
+.w3-button:hover {
+    border-radius: 10rem;
+    background-color: #555;
+animation-name: fade-in;
+animation-duration: 1s;
+}
+
+@keyframes fade-in{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+
+}
+.w3-display-left, .w3-display-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.w3-display-left {
+    left: 0;
+}
+
+.w3-display-right {
+    right: 0;
+}
+
+.aboutusContent{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e9e9ff;
+    height: 500px;
+    
+}
+.containerabout{
+
+    flex: initial;
+    display: inline-block;
+}

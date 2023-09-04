@@ -5,7 +5,7 @@ session_start();
 <?php
 if (isset($_POST["email"]) && isset($_POST["password"])) {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $userpassword = $_POST['password'];
 
     $host = "localhost";
     $dbUsername = "root";
@@ -19,16 +19,14 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     $run_qry = mysqli_query($conn, $select_user);
     if (mysqli_num_rows($run_qry) > 0) {
         while ($row = mysqli_fetch_assoc($run_qry)) {
-            $hashedPassword = md5($password);
+            $hashedPassword = md5($userpassword);
             if ($hashedPassword == $row['password']) {
-                
+                echo'Login Successfully!';
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['email'] = $row['email'];
-
-                echo '<script>alert("Login Successfully!")</script>';
                 
-                header('location:index.php');
+                header("Location: ./index.php");
             } else {
                 echo '<script>alert("Incorrect Email or Password!")</script>';
             }

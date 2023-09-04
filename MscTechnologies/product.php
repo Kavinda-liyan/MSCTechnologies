@@ -11,32 +11,7 @@
     <link href="./Style/product.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img class="logor" src="./Images/MSCLogo.png"/>
-        
-         <nav class="Navs navbar navbar-dark navbar-expand-lg" >
-            <button class="navbar-toggler m-2" data-toggle="collapse" data-target="#coldow"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse justify-content-center" id="coldow">
-                <ul class="navbar-nav fw-bold hovef ">
-                    <li class="nav-item"><a href="./index.php" class="links nav-link" ><span></span>Home</a></li>
-                    <li class="nav-item"><a href="./product.php" class="links nav-link"><span></span>Product</a></li>
-                    <li class="nav-item"><a href="./signin.php" class="links nav-link" to="/services"><span></span>Services</a></li>
-                        <!-- {/* <a href="/#"><span><FaInfo className="nav-icon"/></span>About Us</a> */} -->
-                    <li class="nav-item"></li><a href="./signin.php" class="Login nav-link" to="/Login">Sign In<span><FaUser class="nav-icon"/></span></a></li>
-        
-             
-
-                </ul>
-                
-
-            </div>
-             
-         </nav>
-             <button class="nav-btn" onClick={showNavbar}>
-                 <FaBars/>
-
-             </button>
-     </header>
+<?php include('./navbar.php') ?>
     
     
   <section>
@@ -45,46 +20,47 @@
 
             <div class="row">
               <div class="col-xl-4 p-1 col-sm-8 col-md-6">
-              <Link class="Links" to="/Products">
-                <div class="Products"><p>CCTV</p>
+                <a href="./cctv.php" class="Links" >
+                    <div class="Products"><p>CCTV</p>
                     <img src="Images/Products/CCTV.jpg"></img></div>
-                </Link>
+                </a>
               </div>
+
               <div class="col-xl-4 p-1 col-sm-8 col-md-6">
-                <Link class="Links">
-                <div class="Products"><p>DASH Camera</p>
+                 <a href="./dashcam.php" class="Links">
+                    <div class="Products"><p>DASH Camera</p>
                     <img src="Images/Products/DASHCAMS.jpg"></img></div>
-                </Link>
+                 </a>
               </div>
               <div class="col-xl-4 p-1 col-sm-8 col-md-6">
-              <Link class="Links">
+              <a href="./dasystem.php" class="Links">
                 <div class="Products"><p>DOOR Alarm System</p>
                     <img src="Images/Products/DOORALARM.jpg"></img></div>
-                </Link>
+                      </a>
               </div>
               <div class="col-xl-4 p-1 col-sm-8 col-md-6">
                
-               <Link class="Links">
+               <a class="Links">
                 <div class="Products"><p>GPS System</p>
                     <img src="Images/Products/GPS.jpg"></img></div>
-                </Link>
+                      </a>
                 
               </div>
+
               <div class="col-xl-4 p-1 col-sm-8 col-md-6">
                
-               <Link class="Links">
+               <a href="#" class="Links">
                 <div class="Products"><p>Networking</p>
                     <img src="Images/Products/Networking.jpg"></img></div>
-                </Link>
-                
-                
+               </a>
               </div>
+
               <div class="col-xl-4 p-1 col-sm-8 col-md-6">
                
-               <Link class="Links">
-                <div class="Products"><p>Other Accessories</p>
+              <a class="Links">
+                  <div class="Products"><p>Other Accessories</p>
                     <img src="Images/Products/CCTV.jpg"></img></div>
-                </Link>
+              </a>
                 
               </div>
           </div>

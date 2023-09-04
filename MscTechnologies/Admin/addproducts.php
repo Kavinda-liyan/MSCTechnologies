@@ -23,7 +23,7 @@
                   <p class="justify-content-center text-light text-center " style=" font-family: Verdana, Arial, Helvetica, sans-serif; ">Welcome Admin</p>
                   
                   <ul class="list-group m-3 categories logoutbtn" style=" font-weight: bold;">
-                      <li class="list-group-item list-group-item-dark hoverlist logoutbtn"  >Logout<span class="p-2"></span></li>
+                  <li class="list-group-item list-group-item-dark hoverlist logoutbtn"  ><a class="logout" href="logout.php"> Logout</a> <span class="p-2"></span></li>
                   </ul>
                   <ul class="list-group m-0 categories " style=" font-weight: bold;">
                   <a href="Dashbord.php" class="nav-link linkhover">
@@ -79,7 +79,7 @@
                   <h4 class="justify-content-center text-light text-center py-1" style=" font-family: Verdana, Arial, Helvetica, sans-serif; ">Website</h4>
         
                   <ul class="list-group m-1 categories" style="background-color: rgba(255, 255, 255, 0.125); font-weight: bold;">
-                    <a href="store.php?brand=MSI" class="nav-link linkhover">
+                    <a href="Homepage.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-gears"></i><span class="p-2  ">Home Page</span></li>
                     </a>
                     <a href="store.php?brand=ASUS" class="nav-link linkhover">
