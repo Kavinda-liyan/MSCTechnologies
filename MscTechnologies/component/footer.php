@@ -4,12 +4,12 @@
         <!-- Section: Social media -->
         <section class="mb-4">
           <!-- Facebook -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-facebook-f"></i
+          <a class="btn btn-outline-light btn-floating m-1" href="https://web.facebook.com/profile.php?id=100067215343187" role="button"
+          target="_blank" ><i class="fab fa-facebook-f"></i
           ></a>
     
           <!-- Twitter -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          <a class="btn btn-outline-light btn-floating m-1" href="./aboutus.php" role="button"
             ><i class="fa fa-info"></i
           ></a>
     
@@ -20,13 +20,13 @@
     
     
           <!-- Linkedin -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-linkedin-in"></i
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/kavinda-liyanaarachchi-729b14262/" role="button"
+          target="_blank"><i class="fab fa-linkedin-in"></i
           ></a>
     
           <!-- Github -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-github"></i
+          <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Kavinda-liyan" role="button"
+          target="_blank"><i class="fab fa-github"></i
           ></a>
         </section>
         <!-- Section: Social media -->

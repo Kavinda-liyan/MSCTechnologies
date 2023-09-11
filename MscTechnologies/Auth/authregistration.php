@@ -36,26 +36,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt = $conn->prepare($SELECT);
                 $stmt->bind_param("s", $email);
                 $stmt->execute();
-                $stmt->bind_result($email);
+                $stmt->bind_result($existingEmail);
                 $stmt->store_result();
                 $rnum = $stmt->num_rows;
 
                 if ($rnum == 0) {
                     // Email is not in use, proceed with registration
                     $stmt->close();
-                    $INSERT = "INSERT INTO user (username, address1, address2, phone, email, cemail, password, cpassword) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                    $stmt = $conn->prepare($INSERT);
-                    $stmt->bind_param("sssissss", $user, $address1, $address2, $phone, $email, $cemail, $password, $cpassword);
 
-                    if ($stmt->execute()) {
-                        echo '<script>alert("Registered Successfully!")</script>';
-                        header('Location: ../signin.php');
+                    // Check if the email is already associated with an account
+                    $SELECT = "SELECT email FROM user WHERE email = ? LIMIT 1";
+                    $stmt = $conn->prepare($SELECT);
+                    $stmt->bind_param("s", $cemail);
+                    $stmt->execute();
+                    $stmt->bind_result($existingEmail);
+                    $stmt->store_result();
+
+                    if ($stmt->num_rows > 0) {
+                        echo '<script>alert("Email is already registered")</script>';
                     } else {
-                        echo '<script>alert("Error registering user")</script>';
+                        // Email is not in use, proceed with registration
+                        $stmt->close();
+                        $INSERT = "INSERT INTO user (username, address1, address2, phone, email, cemail, password, cpassword) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                        $stmt = $conn->prepare($INSERT);
+                        $stmt->bind_param("sssissss", $user, $address1, $address2, $phone, $email, $cemail, $password, $cpassword);
+
+                        if ($stmt->execute()) {
+                            echo '<script>alert("Registered Successfully!")</script>';
+                            header('Location: ../successregistration.html');
+                        } else {
+                            echo '<script>alert("Error registering user")</script>';
+                            header('Location: ../unsuccessfull.html');
+                        }
                     }
                     $stmt->close();
                 } else {
                     echo '<script>alert("Email is already registered")</script>';
+                    header('Location: ../register.php');
                 }
                 $conn->close();
             }
