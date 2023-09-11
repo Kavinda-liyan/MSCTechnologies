@@ -112,16 +112,16 @@ if (isset($_POST['save'])) {
                   <h4 class="justify-content-center text-light text-center py-1" style=" font-family: Verdana, Arial, Helvetica, sans-serif; ">Customers</h4>
         
                   <ul class="list-group m-1 categories" style="background-color: rgba(255, 255, 255, 0.125); font-weight: bold;">
-                    <a href="store.php?brand=MSI" class="nav-link linkhover">
+                    <a href="viewuser.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-users"></i><span class="p-2  ">View Users</span></li>
                     </a>
                     <a href="store.php?brand=ASUS" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-truck-loading"></i><span class="p-2 ">Pending Oders</span></li>
                     </a>
-                    <a href="store.php?brand=DELL" class="nav-link linkhover">
+                    <a href="viewfaq.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-question-circle"></i><span class="p-2 ">FAQs</span></li>
                     </a>
-                    <a href="store.php?brand=DELL" class="nav-link linkhover">
+                    <a href="viewmessage.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-message"></i><span class="p-2 ">Massages</span></li>
                     </a>
                     
@@ -150,7 +150,7 @@ if (isset($_POST['save'])) {
               </div>
             </div>
 
-            <div class="col-lg-9 col-md-8 pull-left">
+            <div class="col-lg-9 col-md-8 pull-left rightslidebar">
               <div class="head"> <h1>Service Page</h1></div>
                 <div class="Banner-container">
                     <h3>Main Banner</h3>

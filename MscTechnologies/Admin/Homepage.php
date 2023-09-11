@@ -50,36 +50,90 @@ if (isset($_POST['save'])) {
 }
 
 
+
 // UpdateSlide
 if (isset($_POST['slidesave'])) {
-  // Get other form data
-  $header = $_POST['header'];
   
+  $header = $_POST['header'];
 
-  // Check if a file was uploaded
-  if (!empty($_FILES['slide1']['name']) && !empty($_FILES['slide2']['name']) && !empty($_FILES['slide3']['name']) && !empty($_FILES['slide4']['name']) ) {
-      // Define the target directory for uploaded images
+  
+  if (!empty($_FILES['slide1']['name']) && !empty($_FILES['slide2']['name']) && !empty($_FILES['slide3']['name']) && !empty($_FILES['slide4']['name'])) {
+      
       $target_dir = "../upload/Homepage/slide/";
       $cover1 = $_FILES['slide1']['name'];
       $cover2 = $_FILES['slide2']['name'];
       $cover3 = $_FILES['slide3']['name'];
       $cover4 = $_FILES['slide4']['name'];
-      $target = $target_dir . basename($cover1);
-      $target = $target_dir . basename($cover2);
-      $target = $target_dir . basename($cover3);
-      $target = $target_dir . basename($cover4);
+      $target1 = $target_dir . basename($cover1);
+      $target2 = $target_dir . basename($cover2);
+      $target3 = $target_dir . basename($cover3);
+      $target4 = $target_dir . basename($cover4);
 
-      // Move the uploaded file to the target directory
-      if (move_uploaded_file($_FILES['slide1']['tmp_name'], $target . $_FILES['slide1']['name']) &&
-      move_uploaded_file($_FILES['slide2']['tmp_name'], $target . $_FILES['slide2']['name']) &&
-      move_uploaded_file($_FILES['slide3']['tmp_name'], $target . $_FILES['slide3']['name']) &&
-      move_uploaded_file($_FILES['slide4']['tmp_name'], $target . $_FILES['slide4']['name'])) {
+      
+      if (
+          move_uploaded_file($_FILES['slide1']['tmp_name'], $target1) &&
+          move_uploaded_file($_FILES['slide2']['tmp_name'], $target2) &&
+          move_uploaded_file($_FILES['slide3']['tmp_name'], $target3) &&
+          move_uploaded_file($_FILES['slide4']['tmp_name'], $target4)
+      ) {
           // Update the banner information in the database, including image data
           $sql = "UPDATE slide SET header=?, slide1=?, slide2=?, slide3=?, slide4=?";
           $stmt = $mysqli->prepare($sql);
 
           // Bind parameters to the SQL statement
-          $stmt->bind_param("sssss", $header, $cover1, $cover2, $cover3,$cover4);
+          $stmt->bind_param("sssss", $header, $cover1, $cover2, $cover3, $cover4);
+
+          // Execute the SQL statement
+          $result = $stmt->execute();
+
+          if ($result) {
+              $_SESSION['message'] = "Item Has Been Updated!";
+              $_SESSION['type'] = "alert-success";
+              header("location: UpdateHome.html");
+          } else {
+              $_SESSION['message'] = "Can't Update Item! Try Again!";
+              $_SESSION['type'] = "alert-danger";
+              header("location: error.html");
+          }
+      } else {
+          $_SESSION['message'] = "File upload failed!";
+          $_SESSION['type'] = "alert-danger";
+          header("location: error.html");
+      }
+  } else {
+      $_SESSION['message'] = "No file selected!";
+      $_SESSION['type'] = "alert-warning";
+      header("location: error.html");
+  }
+}
+
+
+
+if (isset($_POST['aboutsave'])) {
+  // Get other form data
+  $headerabout = $_POST['headerabout'];
+  $contextabout = $_POST['contextabout'];
+  $emailabout= $_POST['emailabout'];
+  $mobileabout= $_POST['mobileabout'];
+  $mobileabout2= $_POST['mobileabout2'];
+  $addressabout= $_POST['addressabout'];
+  $addressabout2= $_POST['addressabout2'];
+
+  // Check if a file was uploaded
+  if (!empty($_FILES['imageabout']['name'])) {
+      // Define the target directory for uploaded images
+      $target_dir = "../upload/Homepage/";
+      $imageabout = $_FILES['imageabout']['name'];
+      $target = $target_dir . basename($imageabout);
+
+      // Move the uploaded file to the target directory
+      if (move_uploaded_file($_FILES['imageabout']['tmp_name'], $target)) {
+          // Update the banner information in the database, including image data
+          $sql = "UPDATE about SET header=?, context=?, email=? , mobile=?,mobile2=?, address=?,address2=?, image=?";
+          $stmt = $mysqli->prepare($sql);
+
+          // Bind parameters to the SQL statement
+          $stmt->bind_param("sssiisss", $headerabout, $contextabout, $emailabout, $mobileabout,$mobileabout2,$addressabout,$addressabout2,$imageabout);
 
           // Execute the SQL statement
           $result = $stmt->execute();
@@ -167,16 +221,16 @@ if (isset($_POST['slidesave'])) {
                   <h4 class="justify-content-center text-light text-center py-1" style=" font-family: Verdana, Arial, Helvetica, sans-serif; ">Customers</h4>
         
                   <ul class="list-group m-1 categories" style="background-color: rgba(255, 255, 255, 0.125); font-weight: bold;">
-                    <a href="store.php?brand=MSI" class="nav-link linkhover">
+                    <a href="viewuser.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-users"></i><span class="p-2  ">View Users</span></li>
                     </a>
                     <a href="store.php?brand=ASUS" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-truck-loading"></i><span class="p-2 ">Pending Oders</span></li>
                     </a>
-                    <a href="store.php?brand=DELL" class="nav-link linkhover">
+                    <a href="viewfaq.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-question-circle"></i><span class="p-2 ">FAQs</span></li>
                     </a>
-                    <a href="store.php?brand=DELL" class="nav-link linkhover">
+                    <a href="viewmessage.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-message"></i><span class="p-2 ">Massages</span></li>
                     </a>
                     
@@ -205,7 +259,7 @@ if (isset($_POST['slidesave'])) {
               </div>
             </div>
 
-            <div class="col-lg-9 col-md-8 pull-left">
+            <div class="col-lg-9 col-md-8 pull-left rightslidebar">
               <div class="head"> <h1>Home Page</h1></div>
             <div class="row">
               <div class="col-4">
@@ -283,18 +337,43 @@ if (isset($_POST['slidesave'])) {
                             <br>
                             <input type="text" class="form-control" name="contextabout"  placeholder="Context etc.." required/>
                             <br>
-                            <label>Contact 1<sub>EMail</sub></label>
+                            <label>Contact 1<sub style="color:#002244">&nbsp;&nbsp;EMail</sub></label>
                             <br>
                             <input type="text" class="form-control" name="emailabout"  placeholder="Email etc.." required/>
                             <br>
-                            <label>Contact 2<sub>Mobile</sub></label>
+                            <div class="row">
+                              <div class="col-6">
+                              <label>Contact<sub style="color:#002244">&nbsp;&nbsp;Mobile</sub></label>
                             <br>
-                            <input type="text" class="form-control" name="mobileabout"  placeholder="Mobile etc.." required/>
+                            <input type="number" class="form-control" name="mobileabout"  placeholder="Mobile etc.." required/>
                             <br>
-                            <label>Address<sub>Company</sub></label>
+
+                              </div>
+                              <div class="col-6">
+                              <label>Contact<sub style="color:#002244">&nbsp;&nbsp;Mobile2</sub></label>
                             <br>
-                            <input type="text" class="form-control" name="addressabout"  placeholder="Address etc.." required/>
+                            <input type="number" class="form-control" name="mobileabout2"  placeholder="Mobile etc.." required/>
                             <br>
+
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-6">
+                              <label>Address<sub style="color:#002244">&nbsp;&nbsp;1</sub></label>
+                            <br>
+                            <input type="text" class="form-control" name="addressabout"  placeholder=""address line1" required/>
+                            <br>
+
+                              </div>
+                              <div class="col-6">
+                              <label>Address<sub style="color:#002244">&nbsp;&nbsp;2</sub></label>
+                            <br>
+                            <input type="text" class="form-control" name="addressabout2"  placeholder="address line2" required/>
+                            <br>
+                              </div>
+                            </div>
+                            
                             <label>Image</label>
                             <input type="file" class="form-control" name="imageabout"  placeholder="Background cover etc.." required/>
                             <input type="submit" value="Save" class="save" name="aboutsave">

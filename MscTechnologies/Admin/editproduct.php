@@ -117,10 +117,10 @@ if( isset($_GET['edit']))
                     <a href="store.php?brand=ASUS" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-truck-loading"></i><span class="p-2 ">Pending Oders</span></li>
                     </a>
-                    <a href="store.php?brand=DELL" class="nav-link linkhover">
+                    <a href="viewfaq.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-question-circle"></i><span class="p-2 ">FAQs</span></li>
                     </a>
-                    <a href="store.php?brand=DELL" class="nav-link linkhover">
+                    <a href="viewmessage.php" class="nav-link linkhover">
                       <li class="list-group-item list-group-item"><i class="fa fa-message"></i><span class="p-2 ">Massages</span></li>
                     </a>
                     

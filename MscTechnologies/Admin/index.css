@@ -1,6 +1,8 @@
 body {
-    background-color: #fbfbfb;
-    background-image: url(../Images/BG2.jpg);
+    background-color: #000000;
+    background-image: url(../Images/BGADMIN_1.png);
+    background-size: cover;
+   
   }
   @media (min-width: 991.98px) {
     main {
@@ -10,20 +12,38 @@ body {
   .containe{
     width: 100%;
   }
-body {
-  animation: fade-in 1s forwards;
-}
+
 
   @keyframes fade-in{
     from{
       transform: translateY(-50rem);
       opacity: 0;
+      
     }
     to{
       transform: translateY(0rem);
       opacity: 1;
+      
     }
 
+  }
+  .bi{
+    animation: onoff 1s forwards infinite;
+}
+@keyframes onoff {
+    from{
+      color: rgb(255, 0, 0);
+      
+    }
+    to{
+      
+      color: rgb(138, 0, 0);
+      
+    }
+    to{
+      color: rgb(255, 93, 93);
+    }
+    
   }
   
   /* Sidebar */
@@ -154,20 +174,55 @@ body {
   justify-content: center;
   align-self: center;
 }
-
+.Product-Sort{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+.productsban{
+  background-image: linear-gradient(to right, rgb(255, 255, 255) , rgba(255, 255, 255, 0));
+  border-radius: 10px 1px 1px 10px ;
+  box-shadow: #0000001d 2px 2px 0px 0px ;
+}
 .statistic{
   align-self: center;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-top: 1rem;
-  margin-left: 2rem;
+  margin-left: auto;
+ margin-right: auto;
   background-color: #ffffff;
- height: 300px;
-  border-radius: 0.5rem;
+ height: 250px;
+ width: 250px;
+  border-radius: 0.2rem;
   color: #000000;
-  border: solid rgb(0, 0, 0);
+  box-shadow: #0000001d 1px 2px 1px 1px ;
+  animation: fade-in 1s forwards ;
+  
+ 
+  
 
+}
+@keyframes blurin{
+  from{
+    transform: translateY(-10rem);
+   opacity: 0;
+    filter: blur(100px);
+  }
+  to{
+    transform: translateY(0rem);
+    opacity: 1s;
+    filter: blur(0px);
+  }
+
+}
+.statistic h5{
+  padding-top: 2rem;
+}
+.rightslidebar{
+  margin-left: auto;
+  margin-right: auto;
 }
 .statistic img{
   height: 100px;
