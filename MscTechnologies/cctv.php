@@ -6,8 +6,28 @@ require './connection/dbconnection.php';
 // Instantiate DB & connect
 $mysqli = new mysqli('localhost', 'root', '', 'msctechnologies') or die(mysqli_error($mysqli)); 
 
-$query = 'SELECT * FROM addpproducts WHERE category="CCTV"';
-$book = mysqli_query($mysqli, $query); 
+$recordsPerPage = 4;
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+
+// Calculate the offset for the SQL query based on the current page
+$offset = ($page - 1) * $recordsPerPage;
+
+// SQL query to fetch records for the current page
+$query = "SELECT * FROM addpproducts WHERE category='CCTV' LIMIT $offset, $recordsPerPage";
+$book = mysqli_query($mysqli, $query);
+
+// Count the total number of records
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM addpproducts WHERE category='CCTV'";
+$totalRecordsResult = mysqli_query($mysqli, $totalRecordsQuery);
+$totalRecordsRow = mysqli_fetch_assoc($totalRecordsResult);
+$totalRecords = $totalRecordsRow['total'];
+
+// Calculate the total number of pages
+$totalPages = ceil($totalRecords / $recordsPerPage);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +42,16 @@ $book = mysqli_query($mysqli, $query);
     <link href="./Style/Navbar.css" rel="stylesheet">
     <link href="./Style/item.css" rel="stylesheet">
 </head>
+<style>
+    .fixed-bottom{
+        margin-top: 2rem;
+        position: sticky bottom;
+    }
+    .container{
+        margin-bottom: 2rem;
+    }
+    
+</style>
 <body>
 <?php include('./navbar.php') ?>
  
@@ -40,8 +70,11 @@ $book = mysqli_query($mysqli, $query);
             <div class="row text-lg-center text-md-center py-2">
                 <?php 
                 while ($row = mysqli_fetch_array($book)) {
+
+                    $quantity = $row['quantity'];
+                    $stockStatus = ($quantity < 5) ? 'Out of Stock' : (($quantity < 10) ? 'Limited Stock' : 'In Stock');
                 ?>
-                <div class="col-3 col-sm-4 col-md-4 col-lg-3 p-2">
+                <div class="col-3 col-sm-4 col-md-4 col-lg-3 p-2 cards">
                     <div class="card">
                         <!-- Use the actual image URL from your database -->
                         <img src="./upload/<?php echo $row['cover']; ?>" alt="<?php echo $row['pname']; ?>" class="card-img-top cardimg" />
@@ -52,6 +85,17 @@ $book = mysqli_query($mysqli, $query);
                             <p class="card-text-brand ">Brand :<span><?php echo $row['brand']; ?></span></p>
                             <h6 class="card-text-brand">Price : <span>Rs. <?php echo $row['pprice']; ?>.00</span></h6>
                             <p class="card-text-brand">Description : <?php echo $row['pdiscription']; ?></p>
+                            <p class="card-text-brand" >
+                                Stock: <span style="<?php
+                                if ($quantity >= 10) {
+                                    echo 'color: green;';
+                                } elseif ($quantity >= 5) {
+                                    echo 'color: #ffd700;';
+                                } else {
+                                    echo 'color: red;';
+                                }
+                            ?>"><?php echo $stockStatus; ?></span>
+                            </p>
                             <div class="row">
                               
                               
@@ -69,7 +113,22 @@ $book = mysqli_query($mysqli, $query);
                 ?>
             </div>
         </div>
+        <div class="row justify-content-center" style="width: 80%; margin-left:auto; margin-right:auto;">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                    <li class="page-item <?php if ($i === $page) echo 'active'; ?>">
+                        <a class="page-link" href="cctv.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                    </li>
+                <?php endfor; ?>
+            </ul>
+        </nav>
+    </div>
     </section>
+    <section class="sricky-bottom">
+  <?php include('./component/footer.php') ?>
+
+  </section>
     
 </body>
 </html>

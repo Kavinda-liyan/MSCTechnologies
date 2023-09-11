@@ -30,8 +30,8 @@ ini_set('display_errors', 1);
 
                 if (isset($_SESSION['id'])) {
                     
-                    echo '<li class="nav-item"><a href="#" class="links nav-link"><span></span>User</a></li>';
-                    echo '<li class="nav-item"><a href="#" class="links nav-link"><span></span>Cart</a></li>';
+                    echo '<li class="nav-item"><a href="./userprofile.php" class="links nav-link"><span></span>User</a></li>';
+                    echo '<li class="nav-item"><a href="./viewcart.php" class="links nav-link"><span></span>Cart</a></li>';
                     echo '<li class="nav-item"><a href="logout.php" class="Login nav-link glow-on-hover">Sign out</a></li>';
                 }
 

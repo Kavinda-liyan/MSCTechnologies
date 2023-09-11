@@ -3,6 +3,7 @@ include('header.php');
 require './connection/dbconnection.php';
 ?>
 <?php  
+// Instantiate DB & connect
 $mysqli = new mysqli('localhost', 'root', '', 'msctechnologies') or die(mysqli_error($mysqli)); 
 
 $recordsPerPage = 4;
@@ -12,15 +13,15 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
     $page = 1;
 }
 
-
+// Calculate the offset for the SQL query based on the current page
 $offset = ($page - 1) * $recordsPerPage;
 
-
-$query = "SELECT * FROM addpproducts WHERE category='DASystem' LIMIT $offset, $recordsPerPage";
+// SQL query to fetch records for the current page
+$query = "SELECT * FROM addpproducts WHERE category='GPS' LIMIT $offset, $recordsPerPage";
 $book = mysqli_query($mysqli, $query);
 
-
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM addpproducts WHERE category='DASystem'";
+// Count the total number of records
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM addpproducts WHERE category='GPS'";
 $totalRecordsResult = mysqli_query($mysqli, $totalRecordsQuery);
 $totalRecordsRow = mysqli_fetch_assoc($totalRecordsResult);
 $totalRecords = $totalRecordsRow['total'];
@@ -41,11 +42,6 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
     <link href="./Style/Navbar.css" rel="stylesheet">
     <link href="./Style/item.css" rel="stylesheet">
 </head>
-<style>
-    .justify-content-center{
-        width: 80%;
-    }
-</style>
 <body>
 <?php include('./navbar.php') ?>
  
@@ -53,7 +49,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
         <div class="Product-Sort">
             <div class="row">
                 <div class="col-md-6 pull-left">
-                    <h1 class="text-light px-2" style="font-weight: bold;">Door Alarm System</h1>
+                    <h1 class="text-light px-2" style="font-weight: bold;">GPS System</h1>
                 </div>
              
                 <!-- ... (search form) ... -->
@@ -111,7 +107,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
             <ul class="pagination">
                 <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                     <li class="page-item <?php if ($i === $page) echo 'active'; ?>">
-                        <a class="page-link" href="dasystem.php"><?php echo $i; ?></a>
+                        <a class="page-link" href="gpssystem.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                     </li>
                 <?php endfor; ?>
             </ul>

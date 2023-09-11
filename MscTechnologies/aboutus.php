@@ -73,7 +73,35 @@ if ($result && $result->num_rows > 0) {
 // Close the database connection
 $mysqli->close();
 ?>
+<?php 
+if (isset($_POST['postcmt'])) {
+    // Get other form data
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $comment= $_POST['comment'];
+    
+    if(empty($name)|| empty($email) || empty($comment)){
+        echo '<script>alert("All field should Required")</script>';
+    }
+    else{
+        $mysqli = new mysqli('localhost', 'root', '', 'msctechnologies') or die(mysqli_error($mysqli));
+        $INSERT = "INSERT INTO comment (name,email,comment) VALUES (?,?,?)";
+                        $stmt = $mysqli->prepare($INSERT);
+                        $stmt->bind_param("sss", $name,$email,$comment);
 
+                        if ($stmt->execute()) {
+                            echo '<script>alert("Comment submitted successfully")</script>';
+                        } else {
+                            echo '<script>alert("Error: ' . $stmt->error . '")</script>';
+                        }
+                        $stmt->close();
+                        $mysqli->close();
+                        
+    }
+  
+    
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,45 +137,36 @@ $mysqli->close();
     left: 0px;
     opacity: 1;
 }
+.contents2{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aliceblue;
+    text-align: center;
+}
+.form-group{
+    margin: 1rem;
+    padding: 1rem;
+}
+.form-group label{
+    padding: 1rem;
+}
+.form-group input{
+    border-radius: 0.2rem;
+    border-style: none;
+    background-color: aquamarine;
+}
+.form-group textarea{
+    border-radius: 0.2rem;
+    border-style: none;
+    background-color: aquamarine;
+}
     </style>
 
 </head>
 <body>
     <?php include('./navbar.php') ?>
     
-      <div class="container1">
-        <div class="Content">
-            <div class="container2">
-
-            <h1><span class="glow"><?php echo $mbanner; ?></span>  </h1>
-            <h3><?php echo $sbanner; ?></h3>
-            <p> "<?php echo $ctext; ?>"</p>
-                
-                <button class="discoverBtn"> Discover More..</button>
-            </div>
-        </div>
-
-        </div>
-
-        
-
-        <div class="slideshow-container">
-        <div >
-        <h2 class="w3-center"><?php echo $header; ?></h2>
-        </div>
-
-<div class="w3-content w3-display-container">
-  
-  <img class="mySlides" src="./upload/Homepage/slide/<?php echo $slide1; ?>" alt="<?php echo $slide1; ?>" >
-  <img class="mySlides" src="./upload/Homepage/slide/<?php echo $slide2; ?>" alt="<?php echo $slide2; ?>" >
-  <img class="mySlides" src="./upload/Homepage/slide/<?php echo $slide3; ?>" alt="<?php echo $slide2; ?>" >
-  <img class="mySlides" src="./upload/Homepage/slide/<?php echo $slide4; ?>" alt="<?php echo $slide2; ?>" >
-
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-</div>
-
-        </div>
+     
         <div class="container1">
         <div class="Content2">
             <div class="container2au">
@@ -175,30 +194,30 @@ $mysqli->close();
             <hr>
             
             </div>
+            
         </div>
+        <div class="contents2" >
+                <h3>Contact Us</h3>
+                <form method="post" class="form-group m-2 p-2" action="aboutus.php">
+                <lable>Your Name:</lable><br>
+                <input type="text" name="name">
+                <br>
+                <label>Your Email:</label><br>
+                <input type="email" name="email">
+                <br>
+                <label>message:</label>
+                <br>
+                <textarea name="comment" rows="4" cols="30"></textarea>
+                <br>
+                <input type="submit" value="post Comment" name="postcmt" class="btn btn-primary py-2" style="color:black;">
+                </form>
+                
 
+            </div>
         </div>
         
 
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>
 
 <?php include('./component/footer.php') ?>
 

@@ -14,7 +14,8 @@
 <body>
     <div >
         <section class="Background">
-            <div class="Loginform"> 
+            
+                <div class="Loginform"> 
             
             <div class="content">
              
@@ -25,7 +26,7 @@
                     <input type="email" placeholder="youremail@gmail.com" id="email" name="email" />
                     <label >password</label>
                     <input  type="password" placeholder="********" id="password" name="password" />
-                    <button type="submit">Log In</button>
+                    <button type="submit" class="login">Log In</button>
                 </form>
                 <a href="./register.php"> <button class="link-btn" >Don't have an account? Register here.</button></a>
                 <a class="Arrow" href="./index.php"> <span class="fa fa-home"></span></a>
@@ -33,6 +34,10 @@
     
             </div>
             </div>
+
+               
+            </div>
+            
            
         </section>
 
