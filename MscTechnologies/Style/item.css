@@ -6,7 +6,7 @@
 }
 .card{
     width:300px;
-	height: 500px;
+	height: 100%;
     background-color: #ffffff;
     box-shadow: #00000039 2px 2px 2px 2px;
     padding: 0.5rem;
@@ -14,11 +14,19 @@
 
 }
 
-.btn{
-    border: solid  rgba(0, 255, 255, 0.316);
+
+.addcart{
+	border: solid  rgba(0, 255, 255, 0.316);
     padding-left: 1rem;
     padding-right: 1rem;
-    background-color: #2bdb42;
+   background-color: #2bdb42;
+    color: black;
+}
+.buynow{
+	border: solid  rgb(255, 157, 0);
+    padding-left: 1rem;
+    padding-right: 1rem;
+   background-color: #db9a2b;
     color: black;
 }
 .card img{
@@ -49,6 +57,7 @@
 /* Product view page */
 .cartview{
 	background-color: #ffffff;
+	margin-top: 0px;
 }
 
 .items{
@@ -60,7 +69,7 @@
 	border-radius: 0rem 0rem 1rem 1rem;
 	box-shadow: 1px 1px 2px 1px #bcbcbc67;
 	margin-bottom: 0%;
-	margin-top: 1rem;
+	margin-top: 0rem;
 	
 }
 .rounded{
@@ -126,4 +135,13 @@ width: 100%;
 background-color: #ffffff;
 margin-top: auto;
 
+}
+.backgroundmsg{
+	background-color: #ffffff;
+	padding: 1rem;
+	border-radius: 2rem;
+	box-shadow: #0000002c 1px 1px 1px 1px ;
+}
+.commentadd{
+margin-top: 2rem;
 }

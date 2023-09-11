@@ -94,7 +94,7 @@ section .Content img{
     background-color: #00000000;
     align-items: center;
    justify-content: center;
-   height: 50vh;
+   height: 60vh;
    width: 120vh;
    padding: 2rem;
    margin-top: 3rem;
@@ -107,6 +107,8 @@ section .Content img{
 .container2au img{
     height: 200px;
     width: 200px;
+    border-radius: 0.5rem;
+    box-shadow: #00000056 2px 1px 1px 1px ;
 }
 
 .container2 h1{
@@ -248,10 +250,11 @@ section .Content img{
   .slideshow-container img{
     margin-left:auto ;
     margin-right: auto;
-    width: 80%;
-    height: 400px;
+    width: 720px;
+    height: 360px;
     border-radius: 0.5rem;
     box-shadow: #00000035 1px 2px 2px 2px;
+    
   }
   .slideshow-container h2{
     margin-left: 0;

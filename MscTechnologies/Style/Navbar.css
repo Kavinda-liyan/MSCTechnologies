@@ -222,3 +222,18 @@ img{
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+body {
+	animation: fade-in 2s forwards;
+  }
+  
+	@keyframes fade-in{
+	  from{
+		
+		opacity: 0;
+	  }
+	  to{
+		
+		opacity: 1;
+	  }
+  
+	}

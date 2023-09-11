@@ -24,17 +24,29 @@ body{
 
 
 .content{
- justify-content: center;
+ justify-content: left;
     display:block ;
     height: 100%;
-    width: 100vh;
-    background-color: rgba(0, 0, 0, 0.45);
-    color: #eee;
+    width: 80vh;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
 
     
     border-radius: 40px;
     border: solid 2px #00aeff;
     
+}
+.contentforreg{
+  justify-content: left;
+    display:block ;
+    height: 100%;
+    width: 120vh;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+
+    
+    border-radius: 40px;
+    border: solid 2px #00aeff;
 }
 
 .content p{
@@ -69,9 +81,7 @@ h2{
     flex-direction: column;
     
   }
-  .Pw label{
-    
-  }
+ 
   
   @media screen and (min-width: 600px) {
     .auth-form-container {
@@ -102,10 +112,31 @@ h2{
     border-radius: 10px;
     cursor: pointer;
     color: #000000;
+    font-weight: bold;
+    
   }
+  .login:hover{
+    box-shadow: #0000005b 1px 2px 1px 1px ;
+    background-color: #2dbcff;
+      transition: 0.2s;
+    }
+  
   
   .link-btn {
     background: none;
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: underline;
+  }
+  .link-btn :hover{
+    background: none;
+    color: rgb(58, 58, 58);
+    text-decoration: none;
+    transition: 0.2s;
+  }
+
+  .contentforreg input{
+    background-color: #b3e7ff;
+  }
+  .contentforreg label{
+    font-weight: bold;
   }
