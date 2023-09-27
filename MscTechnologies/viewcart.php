@@ -132,8 +132,10 @@ $stmt->close();
         <div class="profile-card-container">
         <div class="profile container">
             <img src="./Images/cartview.gif" alt="avatar">
-            
+            <h2 style="text-align:center; font-weight:bold;">Cart</h2>
+            <hr>
             <div class="container profiled">
+                
                 <?php
                 if ($cartResult->num_rows > 0) {
                     while ($row = $cartResult->fetch_assoc()) {
@@ -170,16 +172,17 @@ $stmt->close();
                                       <a href="./productdetail.php?id=' . $item['pid'] . '" class="btn btn-primary">Buy</a>
                                         </div>
                                         <div class="col-1">
-                                        <form>
-                                        <input type="submit" value="Delete" name="deletecart" class="btn btn-dark">
-                                        </form>
+                                            <form method="post" action="delete_product.php">
+                                            <input type="hidden" name="productid" value="' . $item['pid'] . '">
+                                            <input type="submit" value="Delete" name="deletecart" class="btn btn-dark">
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>';
                     }
                 } else {
-                    echo "No items found in your cart.";
+                    echo'<div style="text-align:center;"><h3> No items Found in your Cart </h3></div>';
                 }
                 ?>
             </div>

@@ -64,6 +64,8 @@ $book = mysqli_query($dbConnection, $query);
         <div class="profile-card-container">
         <div class="profile container">
             <img class="avatar" src="./Images/cartview.gif" alt="avatar">
+            <h3 style="text-align:center; font-weight:bold;">Purchase Item</h3>
+            <hr>
             
             <div class="container profiled">
                 
@@ -92,21 +94,29 @@ $book = mysqli_query($dbConnection, $query);
                   <hr>'
                   
                   ?>
-                  <div class="quantity">
-    <label for="quantity">Quantity:</label>
-    <button id="decrement" >-</button>
-    <input type="number" id="quantity" name="quantity" value="1" min="1" width="30px">
-    <button id="increment">+</button>
+                  
+    <!-- ... (other form fields) ... -->
+    <div class="quantity">
+        <label for="quantity">Quantity:</label>
+        <button id="decrement">-</button>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" width="30px">
+        <button id="increment">+</button>
+    </div>
+    <div class="subtot">
+        <label for="subtot">Subtotal:</label>
+        <input type="text" id="subtot" name="subtot" disabled>
+    </div>
+    <form method="post" action="payment-checkout.php">
+    <input type="hidden" name="pid" value="<?php echo $product['pid']; ?>">
+    <!-- Add hidden input fields for quantity and subtotal -->
+    <input type="hidden" id="hiddenQuantity" name="hiddenQuantity" value="">
+<input type="hidden" id="hiddenSubtotal" name="hiddenSubtotal" value="">
 
-    
-</div>
-<div class="subtot">
-    <label for="subtot">Subtotal:</label>
-    <input type="text" id="subtot" name="subtot" disabled>
-</div>
-<div class="submit">
-    <input type="submit" name="Purchase" value=" Purchase"class="btn btn-warning"></input>
-</div>
+    <div class="submit">
+        <input type="submit" name="Purchase" value="Purchase" class="btn btn-warning"></input>
+    </div>
+</form>
+
         </div>
         
     </div>
@@ -119,70 +129,54 @@ $book = mysqli_query($dbConnection, $query);
 <?php include('./component/footer.php') ?>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+   document.addEventListener('DOMContentLoaded', function () {
+    var quantityInput = document.getElementById('quantity');
+    var hiddenQuantityInput = document.getElementById('hiddenQuantity');
+    var incrementButton = document.getElementById('increment');
+    var decrementButton = document.getElementById('decrement');
+    var subtotInput = document.getElementById('subtot');
+    var hiddenSubtotalInput = document.getElementById('hiddenSubtotal');
 
-        var quantityInput = document.getElementById('quantity');
-        var incrementButton = document.getElementById('increment');
-        var decrementButton = document.getElementById('decrement');
-        var subtotInput = document.getElementById('subtot');
+    var productPrice = <?php echo $product['pdprice']; ?>;
+    
+    function updateSubtotal() {
+        var currentQuantity = parseInt(quantityInput.value);
+        var subtotal = productPrice * currentQuantity;
 
-        var productPrice = <?php echo $product['pdprice']; ?>;
-        
-        
-        function updateSubtotal() {
-        
-            var currentQuantity = parseInt(quantityInput.value);
+        subtotInput.value = 'Rs. ' + subtotal.toFixed(2) + '.00';
 
-            
-            var subtotal = productPrice * currentQuantity;
+        // Update the hidden quantity and subtotal input fields
+        hiddenQuantityInput.value = currentQuantity;
+        hiddenSubtotalInput.value = subtotal.toFixed(2);
+    }
 
-           
-            subtotInput.value = 'Rs. ' + subtotal.toFixed(2) + '.00';
-        }
-
-        
-        incrementButton.addEventListener('click', function () {
-            
-            var currentQuantity = parseInt(quantityInput.value);
-
-            
-            quantityInput.value = currentQuantity + 1;
-
-            
-            updateSubtotal();
-        });
-
-        
-        decrementButton.addEventListener('click', function () {
-            
-            var currentQuantity = parseInt(quantityInput.value);
-
-            
-            if (currentQuantity > 1) {
-                quantityInput.value = currentQuantity - 1;
-
-                
-                updateSubtotal();
-            }
-        });
-
-        
-        quantityInput.addEventListener('input', function () {
-            
-            var currentQuantity = parseInt(quantityInput.value);
-
-            if (isNaN(currentQuantity) || currentQuantity < 1) {
-                quantityInput.value = 1;
-            }
-
-            
-            updateSubtotal();
-        });
-
-        
+    incrementButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityInput.value);
+        quantityInput.value = currentQuantity + 1;
         updateSubtotal();
     });
+
+    decrementButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity > 1) {
+            quantityInput.value = currentQuantity - 1;
+            updateSubtotal();
+        }
+    });
+
+    quantityInput.addEventListener('input', function () {
+        var currentQuantity = parseInt(quantityInput.value);
+        if (isNaN(currentQuantity) || currentQuantity < 1) {
+            quantityInput.value = 1;
+        }
+        updateSubtotal();
+    });
+
+    updateSubtotal();
+});
+
 </script>
+
 
 </body>
 </html>

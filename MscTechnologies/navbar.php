@@ -17,13 +17,7 @@ ini_set('display_errors', 1);
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="coldow">
             <ul class="navbar-nav fw-bold hovef">
-                <?php 
-                echo '<li class="nav-item"><a href="./index.php" class="links nav-link"><span></span>Home</a></li>
-                <li class="nav-item"><a href="./product.php" class="links nav-link"><span></span>Product</a></li>
-                <li class="nav-item"><a href="./services.php" class="links nav-link"><span></span>Services</a></li>';
-                ?>
-
-                <?php
+            <?php
                 if (!isset($_SESSION['id'])) {
                     echo '<li class="nav-item"><a href="signin.php" class="Login nav-link glow-on-hover">Sign In</a></li>';
                 }
@@ -36,6 +30,13 @@ ini_set('display_errors', 1);
                 }
 
                 ?>
+                <?php 
+                echo '<li class="nav-item"><a href="./index.php" class="links nav-link"><span></span>Home</a></li>
+                <li class="nav-item"><a href="./product.php" class="links nav-link"><span></span>Product</a></li>
+                <li class="nav-item"><a href="./services.php" class="links nav-link"><span></span>Services</a></li>';
+                ?>
+
+                
 
                 
             </ul>
